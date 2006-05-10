@@ -1,6 +1,6 @@
 # http://directory.fedora.redhat.com/wiki/BuildingConsole#Building_Fedora_Directory_Server_Console
 Summary:	Fedora DS Java Remote Management Console
-Summary(pl):	-
+Summary(pl):	Konsola w Javie do zdalnego zarz±dzania serwerem Fedora DS
 Name:		fedora-directoryconsole
 Version:	1.0.2
 Release:	0.1
@@ -33,7 +33,17 @@ Directory Server Console is loaded by the Fedora Management Console
 application.
 
 %description -l pl
--
+Fedora Management Console u¿ywana przez Fedora Directory Server w
+rzeczywisto¶ci sk³ada siê z wielu czê¶ci. Sama aplikacja Fedora
+Management Console jest wiêcej ni¿ tylko aplikacj± w Javie. Zosta³a
+zaprojektowana jako zestaw narzêdzi, które mo¿na rozszerzaæ do
+zarz±dzania wieloma ró¿nymi aplikacjami serwerowymi. Udostêpnia wiele
+wspólnych klas Javy, które mo¿na u¿ywaæ do zarz±dzania nowymi
+aplikacjami. U¿ytkownicy Fedora Directory Servera najlepiej znaj±
+Fedora Directory Server Console. Konsola ta sk³ada siê z paneli
+umo¿liwiaj±cych zarz±dzanie Fedora Directory Serverem. Fedora
+Directory Server Console jest wczytywana przez aplikacjê Fedora
+Management Console.
 
 %prep
 %setup -q
@@ -63,6 +73,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 #%doc AUTHORS CREDITS ChangeLog NEWS README THANKS TODO
+%attr(755,root,root) %{_bindir}/startconsole
+#%dir %{_datadir}/%{name}
 #%{_datadir}/%{name}/fedora-base-%{version}.jar
 #%{_datadir}/%{name}/fedora-mcc-%{version}.jar
 #%{_datadir}/%{name}/fedora-mcc-%{version}_en.jar
@@ -73,4 +85,3 @@ rm -rf $RPM_BUILD_ROOT
 #%{_datadir}/%{name}/fedora-mcc_en.jar
 #%{_datadir}/%{name}/fedora-nmclf.jar
 #%{_datadir}/%{name}/fedora-nmclf_en.jar
-%attr(755,root,root) %{_bindir}/startconsole
