@@ -10,12 +10,14 @@ Source0:	http://directory.fedora.redhat.com/sources/%{name}-%{version}.tar.gz
 # Source0-md5:	7d4229a06ad466c67ae5c7877ec09599
 URL:		http://directory.fedora.redhat.com/wiki/Client_software
 BuildRequires:	mozldap-devel
-BuildRequires:	nss-devel
 BuildRequires:	nspr-devel >= 4.4.1
+BuildRequires:	nss-devel
 BuildRequires:	rpmbuild(macros) >= 1.228
 #build requires Mozilla NSS, NSPR, JSS, and LDAP JDK
-#Requires: ldapjdk >= 4.17, jss >= 3.6
-#BuildRequires:	ldapjdk >= 4.17, jss >= 3.6
+#BuildRequires:	jss >= 3.6
+#BuildRequires:	ldapsdk >= 4.17
+#Requires:	jss >= 3.6
+#Requires:	ldapjdk >= 4.17
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -58,7 +60,7 @@ rm -rf $RPM_BUILD_ROOT
 #install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 #install built/release/jars/fedora-* $RPM_BUILD_ROOT%{_datadir}/%{name}
 #install -d $RPM_BUILD_ROOT%{_bindir}
-#install console/startconsole $RPM_BUILD_ROOT/%{_bindir}
+#install console/startconsole $RPM_BUILD_ROOT%{_bindir}
 
 #cd $RPM_BUILD_ROOT%{_datadir}/%{name}
 #ln -s fedora-base-%{version}.jar fedora-base.jar
