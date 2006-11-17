@@ -2,22 +2,22 @@
 Summary:	Fedora DS Java Remote Management Console
 Summary(pl):	Konsola w Javie do zdalnego zarz±dzania serwerem Fedora DS
 Name:		fedora-directoryconsole
-Version:	1.0.2
+Version:	1.0.3
 Release:	0.1
 License:	GPL
 Group:		Applications
 Source0:	http://directory.fedora.redhat.com/sources/%{name}-%{version}.tar.gz
-# Source0-md5:	7d4229a06ad466c67ae5c7877ec09599
+# Source0-md5:	a062fded54e7205e2eec600f3a18bcad
+Patch0:		%{name}-path.patch
 URL:		http://directory.fedora.redhat.com/wiki/Client_software
-BuildRequires:	mozldap-devel
-BuildRequires:	nspr-devel >= 4.4.1
-BuildRequires:	nss-devel
-BuildRequires:	rpmbuild(macros) >= 1.228
-#build requires Mozilla NSS, NSPR, JSS, and LDAP JDK
-#BuildRequires:	jss >= 3.6
-#BuildRequires:	ldapsdk >= 4.17
-#Requires:	jss >= 3.6
-#Requires:	ldapjdk >= 4.17
+BuildRequires:	ant
+BuildRequires:	fedora-console >= 1.0
+BuildRequires:	jdk
+BuildRequires:	jpackage-utils
+BuildRequires:	ldapsdk >= 4.17
+BuildRequires:	rpmbuild(macros) >= 1.294
+Requires:	fedora-console >= 1.0
+Requires:	ldapsdk >= 4.17
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -49,41 +49,31 @@ Management Console.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-ant
-#ant [-Dimports.file=FILENAME | -Dconsolesdk.location=PATH]
-#ant javadoc
+%ant \
+	-Dconsole.location=%{_datadir}/fedora-console \
+	-Dldapjdk.location=%{_javadir} \
+	-Dldapconsole.root=`pwd`
 
 %install
 rm -rf $RPM_BUILD_ROOT
-#install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
-#install built/release/jars/fedora-* $RPM_BUILD_ROOT%{_datadir}/%{name}
-#install -d $RPM_BUILD_ROOT%{_bindir}
-#install console/startconsole $RPM_BUILD_ROOT%{_bindir}
+install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-#cd $RPM_BUILD_ROOT%{_datadir}/%{name}
-#ln -s fedora-base-%{version}.jar fedora-base.jar
-#ln -s fedora-mcc-%{version}.jar fedora-mcc.jar
-#ln -s fedora-mcc-%{version}_en.jar fedora-mcc_en.jar
-#ln -s fedora-nmclf-%{version}.jar fedora-nmclf.jar
-#ln -s fedora-nmclf-%{version}_en.jar fedora-nmclf_en.jar
+install built/package/fedora-ds-%{version}.jar $RPM_BUILD_ROOT%{_datadir}/%{name}
+install built/package/fedora-ds-%{version}_en.jar $RPM_BUILD_ROOT%{_datadir}/%{name}
+
+ln -sf fedora-ds-%{version}.jar $RPM_BUILD_ROOT%{_datadir}/%{name}/fedora-ds-1.0.jar
+ln -sf fedora-ds-%{version}_en.jar $RPM_BUILD_ROOT%{_datadir}/%{name}/fedora-ds-1.0_en.jar
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-#%doc AUTHORS CREDITS ChangeLog NEWS README THANKS TODO
-%attr(755,root,root) %{_bindir}/startconsole
-#%dir %{_datadir}/%{name}
-#%{_datadir}/%{name}/fedora-base-%{version}.jar
-#%{_datadir}/%{name}/fedora-mcc-%{version}.jar
-#%{_datadir}/%{name}/fedora-mcc-%{version}_en.jar
-#%{_datadir}/%{name}/fedora-nmclf-%{version}.jar
-#%{_datadir}/%{name}/fedora-nmclf-%{version}_en.jar
-#%{_datadir}/%{name}/fedora-base.jar
-#%{_datadir}/%{name}/fedora-mcc.jar
-#%{_datadir}/%{name}/fedora-mcc_en.jar
-#%{_datadir}/%{name}/fedora-nmclf.jar
-#%{_datadir}/%{name}/fedora-nmclf_en.jar
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/fedora-ds-%{version}.jar
+%{_datadir}/%{name}/fedora-ds-%{version}_en.jar
+%{_datadir}/%{name}/fedora-ds-1.0.jar
+%{_datadir}/%{name}/fedora-ds-1.0_en.jar
