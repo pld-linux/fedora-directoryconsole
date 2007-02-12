@@ -1,6 +1,6 @@
 # http://directory.fedora.redhat.com/wiki/BuildingConsole#Building_Fedora_Directory_Server_Console
 Summary:	Fedora DS Java Remote Management Console
-Summary(pl):	Konsola w Javie do zdalnego zarz±dzania serwerem Fedora DS
+Summary(pl.UTF-8):   Konsola w Javie do zdalnego zarzÄ…dzania serwerem Fedora DS
 Name:		fedora-directoryconsole
 Version:	1.0.3
 Release:	0.1
@@ -34,17 +34,17 @@ a Fedora Directory Server instance from the topology panel. The Fedora
 Directory Server Console is loaded by the Fedora Management Console
 application.
 
-%description -l pl
-Fedora Management Console u¿ywana przez Fedora Directory Server w
-rzeczywisto¶ci sk³ada siê z wielu czê¶ci. Sama aplikacja Fedora
-Management Console jest wiêcej ni¿ tylko aplikacj± w Javie. Zosta³a
-zaprojektowana jako zestaw narzêdzi, które mo¿na rozszerzaæ do
-zarz±dzania wieloma ró¿nymi aplikacjami serwerowymi. Udostêpnia wiele
-wspólnych klas Javy, które mo¿na u¿ywaæ do zarz±dzania nowymi
-aplikacjami. U¿ytkownicy Fedora Directory Servera najlepiej znaj±
-Fedora Directory Server Console. Konsola ta sk³ada siê z paneli
-umo¿liwiaj±cych zarz±dzanie Fedora Directory Serverem. Fedora
-Directory Server Console jest wczytywana przez aplikacjê Fedora
+%description -l pl.UTF-8
+Fedora Management Console uÅ¼ywana przez Fedora Directory Server w
+rzeczywistoÅ›ci skÅ‚ada siÄ™ z wielu czÄ™Å›ci. Sama aplikacja Fedora
+Management Console jest wiÄ™cej niÅ¼ tylko aplikacjÄ… w Javie. ZostaÅ‚a
+zaprojektowana jako zestaw narzÄ™dzi, ktÃ³re moÅ¼na rozszerzaÄ‡ do
+zarzÄ…dzania wieloma rÃ³Å¼nymi aplikacjami serwerowymi. UdostÄ™pnia wiele
+wspÃ³lnych klas Javy, ktÃ³re moÅ¼na uÅ¼ywaÄ‡ do zarzÄ…dzania nowymi
+aplikacjami. UÅ¼ytkownicy Fedora Directory Servera najlepiej znajÄ…
+Fedora Directory Server Console. Konsola ta skÅ‚ada siÄ™ z paneli
+umoÅ¼liwiajÄ…cych zarzÄ…dzanie Fedora Directory Serverem. Fedora
+Directory Server Console jest wczytywana przez aplikacjÄ™ Fedora
 Management Console.
 
 %prep
