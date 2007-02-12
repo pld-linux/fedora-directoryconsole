@@ -1,6 +1,6 @@
 # http://directory.fedora.redhat.com/wiki/BuildingConsole#Building_Fedora_Directory_Server_Console
 Summary:	Fedora DS Java Remote Management Console
-Summary(pl.UTF-8):   Konsola w Javie do zdalnego zarządzania serwerem Fedora DS
+Summary(pl.UTF-8):	Konsola w Javie do zdalnego zarządzania serwerem Fedora DS
 Name:		fedora-directoryconsole
 Version:	1.0.3
 Release:	0.1
